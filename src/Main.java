@@ -24,7 +24,10 @@ public class Main {
                         System.out.println("Ancora non sono presenti case in elenco, aggiungi la prima!");
                     else
                         for (int i = 0; i < seller.houses.size(); i++) {
-                            System.out.println("Il prezzo della casa " + seller.houses.get(i).getName() + " è: " + seller.houses.get(i).setPrice() + "€");
+                            System.out.println("Il prezzo della casa " + seller.houses.get(i).getName() + " di "
+                                    + seller.houses.get(i).getSurface() + " mq" + " a "
+                                    + seller.houses.get(i).getDistanceFromSea() + " metri dal mare è di: "
+                                    + seller.houses.get(i).setPrice() + "€");
                         }
             }
         }while(true);
