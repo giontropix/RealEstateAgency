@@ -1,4 +1,6 @@
-public class House {
+import java.io.Serializable;
+
+public class House implements Serializable {
     String name;
     int surface;
     int distanceFromSea;

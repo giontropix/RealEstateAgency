@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        RealEstateAgency seller = new RealEstateAgency();
+        RealEstateAgency seller = new RealEstateAgency("C:\\Users\\giont\\Desktop\\Steve Jobs Academy\\Programmazione\\RealEstate\\text.txt");
         do {
             System.out.println("\nBenvenuto in REMAX Platinum, i professionisti del vendere casa!\n");
             System.out.println(" - Inserisci 1 per aggiungere una nuova casa.\n - Inserisci 2 per vedere i prezzi delle case.");
@@ -18,8 +18,10 @@ public class Main {
                     System.out.println("Inserisci la distanza dal mare");
                     int distanceFromSea = scan2.nextInt();
                     seller.addHouse(name, surface, distanceFromSea);
+
                     break;
                 case 2:
+                    seller.load();
                     if(seller.houses.size() == 0)
                         System.out.println("Ancora non sono presenti case in elenco, aggiungi la prima!");
                     else
