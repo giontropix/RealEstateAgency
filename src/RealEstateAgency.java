@@ -9,11 +9,10 @@ public class RealEstateAgency implements Serializable {
         this.path = path;
     }
 
-    public House addHouse(String name, int surface, int distanceFromSea) {
+    public void addHouse(String name, int surface, int distanceFromSea) {
         House house = new House(name, surface, distanceFromSea);
         houses.add(house);
         store();
-        return house;
     }
 
     private void store() {
@@ -21,8 +20,6 @@ public class RealEstateAgency implements Serializable {
             FileOutputStream fos = new FileOutputStream(this.path);
             ObjectOutputStream oos = new ObjectOutputStream( fos );
             oos.writeObject(houses);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,14 +27,10 @@ public class RealEstateAgency implements Serializable {
 
     public void load() {
         try {
-            FileInputStream fis = new FileInputStream(path);
+            FileInputStream fis = new FileInputStream(this.path);
             ObjectInputStream ois = new ObjectInputStream( fis );
             houses = (ArrayList<House>)ois.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }

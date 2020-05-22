@@ -4,7 +4,6 @@ public class House implements Serializable {
     String name;
     int surface;
     int distanceFromSea;
-    int price;
 
     public House(String name, int surface, int distanceFromSea) {
         this.name = name;
