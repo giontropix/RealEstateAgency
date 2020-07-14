@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class RealEstateAgency implements Serializable {
-    ArrayList<House> houses = new ArrayList();
+    ArrayList<House> houses = new ArrayList<>();
     String path;
 
     public RealEstateAgency(String path){
@@ -17,9 +17,8 @@ public class RealEstateAgency implements Serializable {
 
     private void store() {
         try {
-            FileOutputStream fos = new FileOutputStream(this.path);
-            ObjectOutputStream oos = new ObjectOutputStream( fos );
-            oos.writeObject(houses);
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(this.path));
+            outputStream.writeObject(houses);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,9 +26,8 @@ public class RealEstateAgency implements Serializable {
 
     public void load() {
         try {
-            FileInputStream fis = new FileInputStream(this.path);
-            ObjectInputStream ois = new ObjectInputStream( fis );
-            houses = (ArrayList<House>)ois.readObject();
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(this.path));
+            houses = (ArrayList<House>)inputStream.readObject();
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
